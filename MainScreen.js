@@ -27,13 +27,14 @@ const PERSONAL = '我的';
 const PERSONAL_NORMAL = require('./image/icon_main_index_my_mine_@2x.png');
 const PERSONAL_FOCUS = require('./image/icon_main_index_my_mine_@2x.png');
 
+//首页配置，各组件导入
 export default class MainScreen extends Component {
 
     constructor(props) {
         super(props);
         this.state = {selectedTab: HOME}
     }
-
+    //根据需求定制tab
     _renderTabItem(img:string,selectedImg:string,title:string,childView:object) {
         return (
             <TabNavigator.Item
@@ -49,14 +50,6 @@ export default class MainScreen extends Component {
                 {childView}
             </TabNavigator.Item>
         );
-    }
-
-    static _createChildView(tag) {
-        return (
-            <View style={{flex:1,backgroundColor:'#00baff',alignItems:'center',justifyContent:'center'}}>
-                <Text style={{fontSize:22}}>{tag}</Text>
-            </View>
-        )
     }
 
     render() {

@@ -14,16 +14,13 @@ import React, {
 
 export default class MinePage extends React.Component {
 
-
     constructor(props) {
         super(props);
 
     }
-
     _onClick() {
 
     }
-
     render() {
         return (
           <View style={{flex: 1}}>

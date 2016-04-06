@@ -17,8 +17,7 @@ import Main from './MainScreen';
 let repository = new DataRepository();
 const WINDOW_WIDTH = Platform.OS==='ios'?Dimensions.get('window').width:Dimensions.get('screen').width;
 
-//启动页以后都是用这个模式，加载图片，加载图片动画，设置路由
-
+//启动页，设置路由
 export default class Splash extends React.Component {
 
   //更换封面图片
@@ -27,15 +26,6 @@ export default class Splash extends React.Component {
       .then((result) => {
         if (result){
           this.setState({cover: result});
-          let { navigator } = this.props;
-          if(navigator){
-              setTimeout(() => {
-              navigator.replace({
-              name: '首页',
-              component: Main,
-              });
-            }, 3000);
-          }
         }
       })
       .catch((error) => {
@@ -54,7 +44,7 @@ export default class Splash extends React.Component {
   }
   //定义首页动画播放
   componentDidMount(){
-    this.fetchData();
+    // this.fetchData();
     this.state.bounceValue.setValue(1);
     Animated.timing(
       this.state.bounceValue,
@@ -63,6 +53,16 @@ export default class Splash extends React.Component {
         duration: 3000,
       }
     ).start();
+
+    let { navigator } = this.props;
+    if(navigator){
+        setTimeout(() => {
+        navigator.replace({
+        name: '首页',
+        component: Main,
+        });
+      }, 3000);
+    }
   }
 
   render() {

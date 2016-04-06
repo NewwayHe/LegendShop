@@ -21,13 +21,13 @@ export default class MenuButton extends React.Component {
 
     constructor(props) {
         super(props);
-        this._onClick = this._onClick.bind(this);  // 需要在回调函数中使用this,必须使用bind(this)来绑定
+        this._onClick = this._onClick.bind(this);
     }
 
     _onClick() {
-        // if (this.props.onClick) {   // 在设置了回调函数的情况下
-        //     this.props.onClick(this.props.showText, '');  // 回调Title和Tag
-        // }
+        if (this.props.onClick) { 
+            this.props.onClick(this.props.showText, '');
+        }
     }
 
     render() {

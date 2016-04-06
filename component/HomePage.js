@@ -40,7 +40,7 @@ export default class HomePage extends Component {
 
     }
     _onMenuClick(title, tag) {
-        Alert.alert('提示', '你点击了:' + title + " Tag:" + tag);
+        Alert.alert('提示', '你点击了:' + title);
     }
     render() {
         return (
@@ -109,7 +109,6 @@ export default class HomePage extends Component {
 }
 
 const styles = StyleSheet.create({
-
     menuView1: {
       flex:1,
       justifyContent:'space-around',

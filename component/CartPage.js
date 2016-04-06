@@ -13,11 +13,8 @@ import React, {
 } from 'react-native';
 
 export default class CartPage extends React.Component {
-
-
     constructor(props) {
         super(props);
-
     }
     _onClick() {
 
