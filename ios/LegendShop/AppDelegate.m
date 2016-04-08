@@ -25,13 +25,12 @@
    *
    * $ npm start
    *
-   * To run on device, change `localhost` to the IP address of your computer
-   * (you can get this by typing `ifconfig` into the terminal and selecting the
+   * To run on device, change `localhost` to the IP address of your computer0   * (you can get this by typing `ifconfig` into the terminal and selecting the
    * `inet` value under `en0:`) and make sure your computer and iOS device are
    * on the same Wi-Fi network.
    */
 
-  jsCodeLocation = [NSURL URLWithString:@"http://169.254.2.25:8081/index.ios.bundle?platform=ios&dev=true"];
+  jsCodeLocation = [NSURL URLWithString:@"http://169.254.2.83:8081/index.ios.bundle?platform=ios&dev=true"];
 
   /**
    * OPTION 2

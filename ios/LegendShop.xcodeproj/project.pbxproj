@@ -626,7 +626,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_BUNDLE_IDENTIFIER = org.reactjs.native.com.Legendshop;
+				PRODUCT_BUNDLE_IDENTIFIER = org.reactjs.native.com.legendshop;
 				PRODUCT_NAME = LegendShop;
 				PROVISIONING_PROFILE = "";
 			};
@@ -647,7 +647,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_BUNDLE_IDENTIFIER = org.reactjs.native.com.Legendshop;
+				PRODUCT_BUNDLE_IDENTIFIER = org.reactjs.native.com.legendshop;
 				PRODUCT_NAME = LegendShop;
 				PROVISIONING_PROFILE = "";
 			};

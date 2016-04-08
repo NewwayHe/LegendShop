@@ -10,7 +10,12 @@ import React, {
     StyleSheet,
     ScrollView,
     Platform,
+    Dimensions,
 } from 'react-native';
+
+import TopInfo from './Mine/TopInfo';
+
+const WINDOW_WIDTH = Platform.OS==='ios'?Dimensions.get('window').width:Dimensions.get('screen').width;
 
 export default class MinePage extends React.Component {
 
@@ -30,9 +35,10 @@ export default class MinePage extends React.Component {
                   个人中心
                 </Text>
             </View>
-              <View style={{flex:1,backgroundColor:'#00baff',alignItems:'center',justifyContent:'center'}}>
-                  <Text>个人中心</Text>
-              </View>
+              <ScrollView>
+                      <Image source={require('../image/mine/mine_bg.jpg')} style={styles.backgroundImage}/>
+                      <TopInfo/>
+              </ScrollView>
           </View>
         );
     }
@@ -48,8 +54,16 @@ const styles = StyleSheet.create({
       backgroundColor: 'white',
       alignItems: 'center'  // 使元素垂直居中排布, 当flexDirection为column时, 为水平居中
   },
+
   back:{
     width:15,
     height:12,
   },
+
+  backgroundImage:{
+    position:'absolute',
+    height:105,
+    width:WINDOW_WIDTH,
+  },
+
 });

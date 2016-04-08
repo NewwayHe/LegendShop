@@ -10,13 +10,13 @@ import React, {
     TouchableOpacity,
 } from 'react-native';
 
-import TopBar from './TopBar';
+import TopBar from './Home/TopBar';
 import Swiper from 'react-native-swiper';
-import MenuButton from './MenuButton';
-import Recommend from './Recommend';
-import BusinessActive from './BusinessActive';
-import BusinessNew from './BusinessNew';
-import ThemePavilion from './ThemePavilion';
+import MenuButton from './Home/MenuButton';
+import Recommend from './Home/Recommend';
+import BusinessActive from './Home/BusinessActive';
+import BusinessNew from './Home/BusinessNew';
+import ThemePavilion from './Home/ThemePavilion';
 
 const BANNER_IMGS = [
     require('../image/img_home_banner1_@2x.jpg'),
