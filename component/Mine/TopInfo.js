@@ -41,55 +41,46 @@ export default class TopInfo extends React.Component {
     render() {
         return (
         <View style={{flex:1}}>
-          <View style={{flex:1,flexDirection:'row'}}>
+          <View style={styles.container1}>
             <Image source={require('../../image/mine/icon_member.png')} style={styles.user}/>
-            <View style={{marginTop:20,}}>
+            <View style={styles.container2}>
               <Text style={styles.text1}>
                 用户姓名
               </Text>
-              <View style={{flex:1,flexDirection:'row',marginTop:5,}}>
-                <View style={{flex:1,flexDirection:'row',alignItems:'center'}}>
-                  <Image source={require('../../image/mine/location.png')} style={styles.litleImage}/>
-                  <Text style={styles.text2}>城市</Text>
-                </View>
-                <View style={{flex:1,flexDirection:'row',alignItems:'center',marginLeft:3,}}>
-                  <Image source={require('../../image/mine/location.png')} style={styles.litleImage}/>
-                  <Text style={styles.text2}>性别</Text>
-                </View>
+              <Text style={styles.text1}>
+                13066831968
+              </Text>
+              <Text style={styles.text1}>
+                账号锁定：已锁定
+              </Text>
+              <View style={styles.container3}>
+                <Text style={styles.text1}>
+                  管理账户>>
+                </Text>
               </View>
             </View>
           </View>
-
-          <View style={{flex:1,flexDirection:'row',justifyContent:'flex-end',alignItems:'center'}}>
-            <Text style={styles.text2}>管理账户信息</Text>
-            <Image source={require('../../image/mine/advance_white.png')} style={styles.litleImage}/>
-          </View>
-
-          <View style={styles.container1}>
+          <View style={styles.container}>
             <View>
-              <Text style={styles.text1}>
+              <Text style={[styles.text1,{alignSelf:'center',marginBottom:8}]}>
                 15
               </Text>
               <Text style={styles.text1}>
                  我的收藏
               </Text>
             </View>
-            <View style={{width:1,height:15,backgroundColor:'white',alignItems:'center'}}/>
             <View>
-              <Text style={styles.text1}>
+              <Text style={[styles.text1,{alignSelf:'center',marginBottom:8}]}>
                 33
               </Text>
               <Text style={styles.text1}>
-                 历史纪录
+                 我的消息
               </Text>
             </View>
-            <View style={{width:1,height:15,backgroundColor:'white',alignItems:'center'}}/>
             <View>
+              <Image source={require('../../image/mine/icon_goods_browse.png')} style={styles.image}/>
               <Text style={styles.text1}>
-                7
-              </Text>
-              <Text style={styles.text1}>
-                 我的消息
+                 我的足迹
               </Text>
             </View>
           </View>
@@ -99,7 +90,7 @@ export default class TopInfo extends React.Component {
 }
 
 const styles = StyleSheet.create({
-  container1: {
+  container: {
     flex:1,
     flexDirection:'row',
     justifyContent:'space-around',
@@ -109,30 +100,59 @@ const styles = StyleSheet.create({
     paddingBottom:7,
     backgroundColor:'#8C023A'
   },
+  container1:{
+    flex:1,
+    flexDirection:'row'
+  },
+  container2:{
+    flex:1,
+    marginTop:20,
+    backgroundColor:'transparent',
+  },
+  container3:{
+    flex:1,
+    flexDirection:'row',
+    justifyContent:'flex-end'
+  },
+  titleContainer:{
+    flexDirection:'row',
+    alignItems:'center',
+  },
+  separate:{
+    width:1,
+    height:15,
+    backgroundColor:'white',
+    alignItems:'center',
+  },
+  userContainer2:{
+    flex:1,
+    flexDirection:'row',
+    justifyContent:'flex-end',
+    alignItems:'center',
+    backgroundColor:'transparent'
+  },
   user:{
-    width: 46,
-		height: 46,
+    width: 60,
+		height: 60,
     marginTop:10,
     marginLeft:10,
     marginRight:8,
-		borderRadius: 23,
+		borderRadius: 30,
   },
   litleImage:{
     width:7,
     height:7,
   },
+  image:{
+    alignSelf:'center',
+    marginBottom:5,
+    width:12,
+    height:12,
+  },
   text1:{
     color:'white',
-    alignSelf:'center',
-    fontSize:9,
+    fontSize:8,
+    fontWeight:'bold',
   },
-  text2:{
-    color:'white',
-    alignSelf:'center',
-    fontSize:7,
-  },
-  text3:{
-    color:'white',
-    fontSize:6,
-  },
+
 });

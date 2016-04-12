@@ -6,7 +6,7 @@ import React, {
 } from 'react-native';
 
 import Splash from './Splash';
-//定义启动页和路由
+//定义默认路由导航器
  export default class Legendshop extends React.Component {
   render() {
     let defaultName = 'Splash';

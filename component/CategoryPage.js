@@ -25,7 +25,6 @@ export default class CategoryPage extends React.Component {
         return (
           <View style={{flex: 1}}>
             <View style={styles.container}>
-                <Image source={require('../image/icon_title_back_@2x.png')} style={styles.back}/>
                 <View style={styles.searchBox}>
                     <Image source={require('../image/lib_story_img_search_bt_@2x.png')} style={styles.searchIcon}/>
                     <TextInput
@@ -33,9 +32,8 @@ export default class CategoryPage extends React.Component {
                         placeholder='搜索...'
                         style={styles.inputText}/>
                 </View>
-                <Image source={require('../image/two_dim_code_@2x.png')} style={styles.scanIcon}/>
             </View>
-              <View style={{flex:1,backgroundColor:'#00baff',alignItems:'center',justifyContent:'center'}}>
+              <View style={{flex:1,backgroundColor:'#F1F2F6',alignItems:'center',justifyContent:'center'}}>
                   <Text>分类</Text>
               </View>
           </View>
@@ -53,21 +51,17 @@ const styles = StyleSheet.create({
       backgroundColor: 'white',
       alignItems: 'center'  // 使元素垂直居中排布, 当flexDirection为column时, 为水平居中
   },
-  back:{
-    width:15,
-    height:15,
-  },
   searchBox: {
-      height: 18,
+      height: 23,
       flexDirection: 'row',
       flex: 1,  // 类似于android中的layout_weight,设置为1即自动拉伸填充
-      borderRadius: 10,  // 设置圆角边
+      borderRadius: 3,  // 设置圆角边
       backgroundColor: 'white',
-      borderWidth:0.8,
+      borderWidth:0.5,
       borderColor:'#DEDEDE',
       alignItems:'center',
-      marginLeft: 5,
-      marginRight: 5
+      marginLeft: 20,
+      marginRight: 20,
   },
   scanIcon: {
       height: 17,

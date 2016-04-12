@@ -16,7 +16,7 @@ const ACTIVE_BANNER_IMGS = [
  export default class BusinessActive extends React.Component {
   render() {
     return(
-          <View style={{flex:1,padding:5,}}>
+          <View style={styles.parent}>
               <View style={styles.container}>
                 <Text style={styles.title1}>
                   商家活动
@@ -25,17 +25,17 @@ const ACTIVE_BANNER_IMGS = [
                   更多>>
                 </Text>
               </View>
-              <View style={{height:0.5,backgroundColor:'#F0F0F0',marginTop:8}}/>
+              <View style={[styles.separate,{marginTop:3}]}/>
               <View style={{flex:1,flexDirection:'row',padding:3}}>
                 <TouchableOpacity activeOpacity={0.7}>
                   <Image source={ACTIVE_BANNER_IMGS[0]} style={styles.image2}/>
                 </TouchableOpacity>
-                <View style={{width:0.5,height:150,backgroundColor:'#F0F0F0'}}/>
-                <View style={styles.container1}>
+                <View style={styles.separate1}/>
+                <View style={{flex:1}}>
                   <TouchableOpacity activeOpacity={0.7}>
                     <Image source={ACTIVE_BANNER_IMGS[1]} style={styles.image1}/>
                   </TouchableOpacity >
-                  <View style={{height:0.5,backgroundColor:'#F0F0F0'}}/>
+                  <View style={styles.separate}/>
                   <TouchableOpacity activeOpacity={0.7}>
                     <Image source={ACTIVE_BANNER_IMGS[2]} style={styles.image1}/>
                   </TouchableOpacity >
@@ -47,17 +47,32 @@ const ACTIVE_BANNER_IMGS = [
 }
 
 const styles = StyleSheet.create({
+    parent:{
+      flex:1,
+      padding:5,
+      marginTop:8,
+      backgroundColor:'white',
+    },
     container: {
       flex:1,
-      paddingTop:3,
-      paddingLeft:5,
-      paddingRight:5,
+      padding:5,
       flexDirection:'row',
       justifyContent:'space-between',
       alignItems:'center'
     },
     container1:{
       flex:1,
+      flexDirection:'row',
+      padding:3,
+    },
+    separate:{
+      height:0.5,
+      backgroundColor:'#F0F0F0',
+    },
+    separate1:{
+      width:0.5,
+      height:180,
+      backgroundColor:'#F0F0F0',
     },
     image1:{
       width:150,

@@ -4,6 +4,7 @@ import React, {
     Component,
     Image,
     TextInput,
+    Text,
     View,
     Platform,
     StyleSheet
@@ -21,7 +22,7 @@ export default class Header extends Component {
                         placeholder='搜索...'
                         style={styles.inputText}/>
                 </View>
-                <Image source={require('../../image/two_dim_code_@2x.png')} style={styles.scanIcon}/>
+                <Text style={styles.loginText}>登陆</Text>
             </View>
         )
     }
@@ -38,17 +39,17 @@ const styles = StyleSheet.create({
         alignItems: 'center'  // 使元素垂直居中排布, 当flexDirection为column时, 为水平居中
     },
     logo: {
-        height: 10,
-        width: 65,
+        height: 12,
+        width: 90,
         resizeMode: 'stretch'  // 设置拉伸模式
     },
     searchBox: {
-        height: 18,
+        height: 20,
         flexDirection: 'row',
         flex: 1,  // 类似于android中的layout_weight,设置为1即自动拉伸填充
         borderRadius: 10,  // 设置圆角边
         backgroundColor: 'white',
-        borderWidth:0.8,
+        borderWidth:0.5,
         borderColor:'#DEDEDE',
         alignItems:'center',
         marginLeft: 5,
@@ -66,10 +67,12 @@ const styles = StyleSheet.create({
         height: 10,
         resizeMode: 'stretch'
     },
-
     inputText: {
         flex: 1,
         backgroundColor: 'transparent',
         fontSize: 8
-    }
+    },
+    loginText:{
+        fontSize:10,
+    },
 });

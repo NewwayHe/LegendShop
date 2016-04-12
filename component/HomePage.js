@@ -12,7 +12,7 @@ import React, {
 
 import TopBar from './Home/TopBar';
 import Swiper from 'react-native-swiper';
-import MenuButton from './Home/MenuButton';
+import MenuButton from './MenuButton';
 import Recommend from './Home/Recommend';
 import BusinessActive from './Home/BusinessActive';
 import BusinessNew from './Home/BusinessNew';
@@ -24,7 +24,6 @@ const BANNER_IMGS = [
     require('../image/img_home_banner3_@2x.jpg'),
     require('../image/img_home_banner4_@2x.jpg')
 ];
-
 const adv_IMGS= [
     require('../image/home_adv_@2x.jpg'),
     require('../image/home_adv_@2x.jpg'),
@@ -32,9 +31,8 @@ const adv_IMGS= [
     require('../image/home_adv_@2x.jpg')
 ];
 
-
+//首页配置，各组件导入
 export default class HomePage extends Component {
-
     constructor(props) {
         super(props);
 
@@ -46,28 +44,27 @@ export default class HomePage extends Component {
         return (
             <View style={{flex: 1}}>
               <TopBar />
-	            <ScrollView>
+	            <ScrollView style={styles.container1}>
                 <Swiper style={styles.wrapper} height={120}
-                  paginationStyle={styles.paginationStyle}
-                  loop={true}>
+                        paginationStyle={styles.paginationStyle}
+                        loop={true}>
                       <Image  source={BANNER_IMGS[0]}/>
                       <Image  source={BANNER_IMGS[1]}/>
                       <Image  source={BANNER_IMGS[2]}/>
                       <Image  source={BANNER_IMGS[3]}/>
                 </Swiper>
-                <View style={{height:8,backgroundColor:'#F0F0F0'}}/>
                 <View style={styles.menuView1}>
                     <MenuButton renderIcon={require('../image/icon_home_center_tag1_@2x.png')}
-                                showText={'精品'} tag={'wdgz'}
+                                showText={'精品'}
                                 onClick={this._onMenuClick}/>
                     <MenuButton renderIcon={require('../image/icon_home_center_tag2_@2x.png')}
-                                showText={'热卖'} tag={'wlcx'}
+                                showText={'热卖'}
                                 onClick={this._onMenuClick}/>
                     <MenuButton renderIcon={require('../image/icon_home_center_tag3_@2x.png')}
-                                showText={'促销'} tag={'cz'}
+                                showText={'促销'}
                                 onClick={this._onMenuClick}/>
                     <MenuButton renderIcon={require('../image/icon_home_center_tag4_@2x.png')}
-                                showText={'团购'} tag={'dyp'}
+                                showText={'团购'}
                                 onClick={this._onMenuClick}/>
                 </View>
                 <View style={styles.menuView2}>
@@ -84,9 +81,7 @@ export default class HomePage extends Component {
                                 showText={'品牌'} tag={'gd'}
                                 onClick={this._onMenuClick}/>
                 </View>
-                <View style={{height:8,backgroundColor:'#F0F0F0'}}/>
                 <Recommend/>
-                <View style={{height:8,backgroundColor:'#F0F0F0'}}/>
                 <Swiper style={styles.wrapper} height={65}
                   paginationStyle={styles.paginationStyle}
                   loop={true}>
@@ -95,13 +90,9 @@ export default class HomePage extends Component {
                       <Image  source={adv_IMGS[2]} />
                       <Image  source={adv_IMGS[3]} />
                 </Swiper>
-                <View style={{height:8,backgroundColor:'#F0F0F0'}}/>
                 <BusinessActive/>
-                <View style={{height:8,backgroundColor:'#F0F0F0'}}/>
                 <BusinessNew/>
-                <View style={{height:8,backgroundColor:'#F0F0F0'}}/>
                 <ThemePavilion/>
-                <View style={{height:8,backgroundColor:'#F0F0F0'}}/>
               </ScrollView>
             </View>
         )
@@ -109,19 +100,23 @@ export default class HomePage extends Component {
 }
 
 const styles = StyleSheet.create({
+    container1:{
+      backgroundColor:'#F1F2F6',
+    },
     menuView1: {
       flex:1,
+      backgroundColor:'white',
       justifyContent:'space-around',
       flexDirection: 'row',
-      marginTop: 10,
-      marginBottom:3,
+      marginTop: 8,
+      padding:3,
     },
     menuView2: {
       flex:1,
+      backgroundColor:'white',
       justifyContent:'space-around',
       flexDirection: 'row',
-      marginTop: 3,
-      marginBottom:10,
+      padding: 3,
     },
     text: {
       color: '#fff',
@@ -130,6 +125,7 @@ const styles = StyleSheet.create({
     },
     wrapper: {
       flex:1,
+      backgroundColor:'white'
     },
     paginationStyle:{
       bottom: 5,

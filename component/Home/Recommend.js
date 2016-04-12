@@ -15,10 +15,40 @@ const RECOMMEND_IMGS = [
     require('../../image/hotprod_banner04_@2x.jpg')
 ];
  export default class Recommend extends React.Component {
+
+   constructor(props) {
+           super(props);
+   }
+
+   _renderItem(data){
+     return data.map((item,i)=>{
+       return (
+           <TouchableOpacity key={i} activeOpacity={0.7}>
+             <View style={styles.container1}>
+               <Image source={item} style={styles.image}/>
+               <Text style={[styles.text1,{marginTop:3}]}>
+                 三只松鼠 坚果组合
+               </Text>
+               <Text style={styles.text1}>
+                 夏威夷果碧根果手剥
+               </Text>
+               <View style={styles.container2}>
+                 <Text style={styles.text2}>
+                   ¥52.8
+                 </Text>
+                 <Text style={styles.text3}>
+                   ¥52
+                 </Text>
+               </View>
+             </View>
+           </TouchableOpacity>
+          )
+     });
+   }
   render() {
     return(
-          <View style={{flex:1,padding:5,}}>
-              <View style={{flex:1,paddingTop:3,paddingLeft:5,paddingRight:5,flexDirection:'row',justifyContent:'space-between',alignItems:'center'}}>
+          <View style={styles.parent}>
+              <View style={styles.parentContainer}>
                 <Text style={styles.title1}>
                   热卖推荐
                 </Text>
@@ -27,82 +57,7 @@ const RECOMMEND_IMGS = [
                 </Text>
               </View>
               <View style={styles.container}>
-                <TouchableOpacity activeOpacity={0.7}>
-                  <View style={styles.container1}>
-                    <Image source={RECOMMEND_IMGS[0]} style={styles.image}/>
-                    <Text style={[styles.text1,{marginTop:3}]}>
-                      三只松鼠 坚果组合
-                    </Text>
-                    <Text style={styles.text1}>
-                      夏威夷果碧根果手剥
-                    </Text>
-                    <View style={styles.container2}>
-                      <Text style={styles.text2}>
-                        ¥52.8
-                      </Text>
-                      <Text style={styles.text3}>
-                        ¥52
-                      </Text>
-                    </View>
-                  </View>
-                </TouchableOpacity>
-                <TouchableOpacity activeOpacity={0.7}>
-                  <View style={styles.container1}>
-                    <Image  source={RECOMMEND_IMGS[1]} style={styles.image}/>
-                    <Text style={[styles.text1,{marginTop:3}]}>
-                      三只松鼠 坚果组合
-                    </Text>
-                    <Text style={styles.text1}>
-                      夏威夷果碧根果手剥
-                    </Text>
-                    <View style={styles.container2}>
-                      <Text style={styles.text2}>
-                        ¥52.8
-                      </Text>
-                      <Text style={styles.text3}>
-                        ¥52
-                      </Text>
-                    </View>
-                  </View>
-                </TouchableOpacity>
-                <TouchableOpacity activeOpacity={0.7}>
-                  <View style={styles.container1}>
-                    <Image  source={RECOMMEND_IMGS[2]} style={styles.image}/>
-                    <Text style={[styles.text1,{marginTop:3}]}>
-                      三只松鼠 坚果组合
-                    </Text>
-                    <Text style={styles.text1}>
-                      夏威夷果碧根果手剥
-                    </Text>
-                    <View style={styles.container2}>
-                      <Text style={styles.text2}>
-                        ¥52.8
-                      </Text>
-                      <Text style={styles.text3}>
-                        ¥52
-                      </Text>
-                    </View>
-                  </View>
-                </TouchableOpacity>
-                <TouchableOpacity activeOpacity={0.7}>
-                  <View style={styles.container1}>
-                    <Image  source={RECOMMEND_IMGS[3]} style={styles.image}/>
-                    <Text style={[styles.text1,{marginTop:3}]}>
-                      三只松鼠 坚果组合
-                    </Text>
-                    <Text style={styles.text1}>
-                      夏威夷果碧根果手剥
-                    </Text>
-                    <View style={styles.container2}>
-                      <Text style={styles.text2}>
-                        ¥52.8
-                      </Text>
-                      <Text style={styles.text3}>
-                        ¥52
-                      </Text>
-                    </View>
-                  </View>
-                </TouchableOpacity>
+                  {this._renderItem(RECOMMEND_IMGS)}
               </View>
           </View>
       )
@@ -110,6 +65,22 @@ const RECOMMEND_IMGS = [
 }
 
 const styles = StyleSheet.create({
+    parent:{
+      flex:1,
+      padding:5,
+      marginTop:8,
+      marginBottom:8,
+      backgroundColor:'white',
+    },
+    parentContainer:{
+      flex:1,
+      paddingTop:3,
+      paddingLeft:5,
+      paddingRight:5,
+      flexDirection:'row',
+      justifyContent:'space-between',
+      alignItems:'center'
+    },
     container: {
         flex:1,
         justifyContent:'space-around',
