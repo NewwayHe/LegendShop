@@ -22,7 +22,6 @@ const BANNER_IMGS = [
     require('../image/img_home_banner1_@2x.jpg'),
     require('../image/img_home_banner2_@2x.jpg'),
     require('../image/img_home_banner3_@2x.jpg'),
-    require('../image/img_home_banner4_@2x.jpg')
 ];
 const adv_IMGS= [
     require('../image/home_adv_@2x.jpg'),
@@ -45,13 +44,12 @@ export default class HomePage extends Component {
             <View style={{flex: 1}}>
               <TopBar />
 	            <ScrollView style={styles.container1}>
-                <Swiper style={styles.wrapper} height={120}
+                <Swiper style={styles.wrapper} height={145}
                         paginationStyle={styles.paginationStyle}
                         loop={true}>
                       <Image  source={BANNER_IMGS[0]}/>
                       <Image  source={BANNER_IMGS[1]}/>
                       <Image  source={BANNER_IMGS[2]}/>
-                      <Image  source={BANNER_IMGS[3]}/>
                 </Swiper>
                 <View style={styles.menuView1}>
                     <MenuButton renderIcon={require('../image/icon_home_center_tag1_@2x.png')}
@@ -82,7 +80,7 @@ export default class HomePage extends Component {
                                 onClick={this._onMenuClick}/>
                 </View>
                 <Recommend/>
-                <Swiper style={styles.wrapper} height={65}
+                <Swiper style={styles.wrapper} height={70}
                   paginationStyle={styles.paginationStyle}
                   loop={true}>
                       <Image  source={adv_IMGS[0]} />

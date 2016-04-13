@@ -96,15 +96,15 @@ const styles = StyleSheet.create({
       backgroundColor:'#F0F0F0',
     },
     image1:{
-      width:150,
+      width:180,
       height:60,
     },
     title1:{
       color:'#323232',
-      fontSize:8
+      fontSize:10
     },
     title2:{
       color:'#1A92E0',
-      fontSize:7
+      fontSize:8
     }
 });

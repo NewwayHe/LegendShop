@@ -103,28 +103,28 @@ const styles = StyleSheet.create({
       alignItems:'center',
     },
     image:{
-      width:62,
-      height:62,
+      width:70,
+      height:65,
     },
     text1:{
       color:'#646464',
-      fontSize:6
+      fontSize:8
     },
     text2:{
       color:'#FF2640',
-      fontSize:6
+      fontSize:8
     },
     text3:{
       marginLeft:3,
       color:'#969696',
-      fontSize:5
+      fontSize:6
     },
     title1:{
       color:'#323232',
-      fontSize:8
+      fontSize:10
     },
     title2:{
       color:'#1A92E0',
-      fontSize:7
+      fontSize:8
     }
 });

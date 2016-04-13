@@ -109,8 +109,8 @@ const styles = StyleSheet.create({
     backgroundColor:'#F0F0F0',
   },
   image:{
-    width:12,
-    height:12,
+    width:13,
+    height:13,
   },
   litleImage:{
     width:8,
@@ -118,10 +118,12 @@ const styles = StyleSheet.create({
   },
   text1:{
     marginLeft:5,
-    fontSize:8,
+    fontSize:10,
+    color:'#6C656C',
   },
   text2:{
     marginRight:5,
-    fontSize:8,
+    fontSize:10,
+    color:'#6C656C',
   },
 });

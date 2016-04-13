@@ -39,12 +39,12 @@ const styles = StyleSheet.create({
         alignItems: 'center'  // 使元素垂直居中排布, 当flexDirection为column时, 为水平居中
     },
     logo: {
-        height: 12,
-        width: 90,
+        height: 15,
+        width: 100,
         resizeMode: 'stretch'  // 设置拉伸模式
     },
     searchBox: {
-        height: 20,
+        height: 22,
         flexDirection: 'row',
         flex: 1,  // 类似于android中的layout_weight,设置为1即自动拉伸填充
         borderRadius: 10,  // 设置圆角边
@@ -52,8 +52,8 @@ const styles = StyleSheet.create({
         borderWidth:0.5,
         borderColor:'#DEDEDE',
         alignItems:'center',
-        marginLeft: 5,
-        marginRight: 5
+        marginLeft:10,
+        marginRight:10,
     },
     scanIcon: {
         height: 17,
@@ -70,9 +70,9 @@ const styles = StyleSheet.create({
     inputText: {
         flex: 1,
         backgroundColor: 'transparent',
-        fontSize: 8
+        fontSize: 10
     },
     loginText:{
-        fontSize:10,
+        fontSize:12,
     },
 });

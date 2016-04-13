@@ -7,119 +7,180 @@ import React, {
     Image,
     TouchableOpacity,
     PropTypes,
-    StyleSheet
+    ScrollView,
+    StyleSheet,
 } from 'react-native';
 
 //该组件定义了左中右三种list相互关联的组件
 
-export default class MenuButton extends React.Component {
+export default class ExpandTab extends React.Component {
 
     static propTypes = {
-        originData:PropTypes.object,//定义原始数据
-        tabSelected:PropTypes.number,
-        childSelected:PropTypes.number,
-        renderIcon: PropTypes.number.isRequired, // 图片,加入.isRequired即为比填项
-        showText: PropTypes.string.isRequired,  // 显示标题\文字
+        originData:PropTypes.oneOfType([PropTypes.array, PropTypes.object]),
+        tabIndex:PropTypes.number,
+        childIndex:PropTypes.number,
     };
 
     constructor(props) {
         super(props);
-        state = {
+        this.state = {
           tabIndex:0,
           childIndex:0,
         };
     }
 
-    _tabItemSelected(number:index){
-
+    _tabItemSelected(index:number){
+      this.setState({
+        tabIndex: index,
+        childIndex:0,
+      });
     }
 
-    _childItemSelected(number:index){
-
+    _childItemSelected(index:number){
+      this.setState({
+        childIndex: index,
+      });
     }
 
-    _grandsonItemSelected(number:index){
-
+    _grandsonItemSelected(index:number){
+        //跳转逻辑
     }
-
-    _renderTab(oject:data,number:index){
+    //绘制最左边的tab栏
+    _renderTab(data:object,tabIndex:number){
       return data.map((item,i)=>{
-        let selected=styles.select;
+        let selected=styles.selectText;
         return (
-          <TouchableOpacity activeOpacity={0.7} onPress={this._tabItemSelected(i)}>
+          <TouchableOpacity key={i} activeOpacity={0.7} onPress = {()=> this._tabItemSelected(i)}>
               <View style={styles.container1}>
-                  <Image style={styles.icon} source={this.props.renderIcon}/>
-                  <Text style={styles.showText}>{this.props.showText}</Text>
-                  {renderPrompt}
+                  <Image style={styles.icon} source={item.img}/>
+                  <Text style={[styles.showText,tabIndex==i?selected:null]}>{item.type}</Text>
               </View>
           </TouchableOpacity>
            )
       });
     }
-
-    _renderChild(data){
-
-    }
-
-    _renderGrandson(data){
-
-
-    }
-
-    render() {
-        let tab=this._renderTab();
-        let child=this._renderChild();
-        let grandson=this._renderGrandson();
-
+    //绘制中间的child栏
+    _renderChild(data:object,tabIndex:number,childeIndex:number){
+      return data[tabIndex].content.map((item,i)=>{
+        let selected=styles.selectBg;
         return (
-          <View style={styles.container}>
-              <ScrollView style={styles.scroll1}>
-                {tab}
-              </ScrollView>
-              <ScrollView style={styles.scroll2}}>
-                {child}
-              </ScrollView>
-              <ScrollView style={styles.scroll3}}>
-                {grandson}
-              </ScrollView>
+          <TouchableOpacity key={i} activeOpacity={0.7} onPress={()=> this._childItemSelected(i)}>
+              <View style={[styles.container2,childeIndex==i?selected:null]}>
+                  <Text style={styles.childeText}>{item.category}</Text>
+              </View>
+          </TouchableOpacity>
+           )
+      });
+    }
+    //绘制最右边的grandson栏
+    _renderGrandson(data:object,tabIndex:number,childIndex:number){
+      let childData=data[tabIndex].content;
+      return childData[childIndex].items.map((item,i)=>{
+        let selected=styles.selectBg;
+        return (
+          <TouchableOpacity key={i} activeOpacity={0.7} onPress={()=> this._grandsonItemSelected(i)}>
+              <View style={styles.container2}>
+                  <Text style={styles.childeText}>{item}</Text>
+              </View>
+          </TouchableOpacity>
+           )
+      });
+    }
+    render() {
+        let {tabIndex,childIndex}=this.state;
+        let tab=this._renderTab(this.props.originData,tabIndex);
+        let child=this._renderChild(this.props.originData,tabIndex,childIndex);
+        let grandson=this._renderGrandson(this.props.originData,tabIndex,childIndex);
+        return (
+          <View style={styles.parent}>
+            <View style={styles.separate}/>
+            <View style={styles.container}>
+                <ScrollView style={styles.scroll1}>
+                  {tab}
+                </ScrollView>
+                <ScrollView style={styles.scroll2}>
+                  {child}
+                </ScrollView>
+                <ScrollView style={styles.scroll3}>
+                  {grandson}
+                </ScrollView>
+            </View>
           </View>
         );
     }
 }
 
 const styles = StyleSheet.create({
-  container:{
+  parent:{
     flex:1,
+    backgroundColor:'#F1F2F6',
+  },
+  container:{
+    flexDirection:1,
     flexDirection:'row',
+  },
+  separate:{
+    height:0.5,
+    backgroundColor:'#F0F0F0',
   },
   container1:{
      alignItems:'center',
      flex:1,
-     paddingLeft:10,
-     paddingRight:10,
-     paddingTop:3,
-     paddingBottom:3,
+     paddingTop:5,
+     paddingBottom:5,
+     borderRightWidth:0.5,
+     borderBottomWidth:0.5,
+     borderColor:'#F0F0F0',
+     backgroundColor:'#ffff',
+  },
+  container2:{
+     alignItems:'center',
+     flex:1,
+     paddingTop:5,
+     paddingBottom:5,
+     borderRightWidth:0.5,
+     borderBottomWidth:0.5,
+     borderColor:'#F0F0F0',
+     backgroundColor:'#ffff',
+  },
+  container3:{
+     alignItems:'center',
+     flex:1,
+     paddingTop:5,
+     paddingBottom:5,
+     borderRightWidth:0.5,
+     borderBottomWidth:0.5,
+     borderColor:'#F0F0F0',
+     backgroundColor:'#ffff',
   },
   scroll1:{
-      width:100,
+    flex:2,
   },
   scroll2:{
-    width:100,
+    flex:3,
   },
   scroll3:{
-    width:100,
+    flex:3,
   },
   //选中背景颜色
-  select:{
+  selectBg:{
     backgroundColor:'#F0F2F5',
   },
+  selectText:{
+    color:'#FF0000',
+  },
   icon: {
-      width: 35,
-      height: 35,
-      marginBottom: 3
+      width: 48,
+      height: 48,
   },
   showText: {
-      fontSize: 8,
+      fontSize: 10,
       color:'#6E6E6E',
-  }
+  },
+  childeText:{
+    paddingTop:8,
+    paddingBottom:8,
+    fontSize: 10,
+    color:'#6E6E6E',
+  },
 });

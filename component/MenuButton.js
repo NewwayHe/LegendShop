@@ -64,12 +64,12 @@ const styles = StyleSheet.create({
        paddingBottom:3,
     },
     icon: {
-        width: 35,
-        height: 35,
+        width: 40,
+        height: 40,
         marginBottom: 3
     },
     showText: {
-        fontSize: 8,
+        fontSize: 10,
         color:'#6E6E6E',
     }
 });

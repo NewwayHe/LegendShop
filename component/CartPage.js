@@ -27,7 +27,7 @@ export default class CartPage extends React.Component {
                   购物车
                 </Text>
             </View>
-              <View style={{flex:1,backgroundColor:'#00baff',alignItems:'center',justifyContent:'center'}}>
+              <View style={{flex:1,backgroundColor:'#F1F2F6',alignItems:'center',justifyContent:'center'}}>
                   <Text>购物车</Text>
               </View>
           </View>

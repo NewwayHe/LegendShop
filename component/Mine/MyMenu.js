@@ -61,7 +61,7 @@ const TEXTS= [{title:'我的订单',content:'查看全部订单>>',img:require('
 export default class MyMenu extends React.Component {
 
     static propTypes = {
-        data: PropTypes.object, 
+        data: PropTypes.object,
     };
     constructor(props) {
         super(props);
@@ -101,8 +101,8 @@ export default class MyMenu extends React.Component {
           <MenuButton key={i}
                     renderIcon={item.img}
                     showText={item.txt}
-                    textStyle={{fontSize:8}}
-                    iconStyle={{width:16,height:16,marginBottom:3}}/>
+                    textStyle={{fontSize:10}}
+                    iconStyle={{width:17,height:17,marginBottom:3}}/>
         )
       });
     }
@@ -143,15 +143,17 @@ const styles = StyleSheet.create({
     backgroundColor:'white',
   },
   image:{
-    width:12,
-    height:12,
+    width:13,
+    height:13,
   },
   text1:{
     marginLeft:5,
-    fontSize:8,
+    fontSize:10,
+    color:'#6C656C',
   },
   text2:{
     marginRight:5,
-    fontSize:8,
+    fontSize:10,
+    color:'#6C656C',
   },
 });
