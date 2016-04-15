@@ -42,6 +42,7 @@ export default class Splash extends React.Component {
             bounceValue: new Animated.Value(1),
         };
   }
+
   //定义首页动画播放
   componentDidMount(){
     // this.fetchData();
@@ -55,11 +56,12 @@ export default class Splash extends React.Component {
     ).start();
 
     let { navigator } = this.props;
+    let main=()=>{return <Main navigatorMain={navigator}/>};
     if(navigator){
         setTimeout(() => {
         navigator.replace({
         name: '首页',
-        component: Main,
+        component: main,
         });
       }, 3000);
     }

@@ -36,7 +36,7 @@ export default class MenuButton extends React.Component {
 
     _onClick() {
         if (this.props.onClick) {
-            this.props.onClick(this.props.showText, '');
+            this.props.onClick();
         }
     }
 

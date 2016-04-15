@@ -18,6 +18,8 @@ import BusinessActive from './Home/BusinessActive';
 import BusinessNew from './Home/BusinessNew';
 import ThemePavilion from './Home/ThemePavilion';
 
+import ProductList from './Product/ProductList'
+
 const BANNER_IMGS = [
     require('../image/img_home_banner1_@2x.jpg'),
     require('../image/img_home_banner2_@2x.jpg'),
@@ -34,10 +36,21 @@ const adv_IMGS= [
 export default class HomePage extends Component {
     constructor(props) {
         super(props);
+        this._onMenuClick = this._onMenuClick.bind(this);
 
     }
-    _onMenuClick(title, tag) {
-        Alert.alert('提示', '你点击了:' + title);
+    _onMenuClick(title:string) {
+       let navigatorHome = this.props.navigatorHome;
+       if(navigatorHome) {
+          let productList=()=>{return <ProductList navigatorProductList={navigatorHome}/>};
+           navigatorHome.push({
+               name: title,
+               component: productList,
+               params: {
+                    text:title,
+                }
+           })
+       }
     }
     render() {
         return (
@@ -54,30 +67,30 @@ export default class HomePage extends Component {
                 <View style={styles.menuView1}>
                     <MenuButton renderIcon={require('../image/icon_home_center_tag1_@2x.png')}
                                 showText={'精品'}
-                                onClick={this._onMenuClick}/>
+                                onClick={()=>this._onMenuClick('精品')}/>
                     <MenuButton renderIcon={require('../image/icon_home_center_tag2_@2x.png')}
                                 showText={'热卖'}
-                                onClick={this._onMenuClick}/>
+                                onClick={()=>this._onMenuClick('热卖')}/>
                     <MenuButton renderIcon={require('../image/icon_home_center_tag3_@2x.png')}
                                 showText={'促销'}
-                                onClick={this._onMenuClick}/>
+                                onClick={()=>this._onMenuClick('促销')}/>
                     <MenuButton renderIcon={require('../image/icon_home_center_tag4_@2x.png')}
                                 showText={'团购'}
-                                onClick={this._onMenuClick}/>
+                                onClick={()=>this._onMenuClick('团购')}/>
                 </View>
                 <View style={styles.menuView2}>
                     <MenuButton renderIcon={require('../image/icon_home_center_tag5_@2x.png')}
-                                showText={'积分'} tag={'yxcz'}
-                                onClick={this._onMenuClick}/>
+                                showText={'积分'}
+                                onClick={()=>this._onMenuClick('积分')}/>
                     <MenuButton renderIcon={require('../image/icon_home_center_tag6_@2x.png')}
-                                showText={'试用'} tag={'xjk'}
-                                onClick={this._onMenuClick}/>
+                                showText={'试用'}
+                                onClick={()=>this._onMenuClick('试用')}/>
                     <MenuButton renderIcon={require('../image/icon_home_center_tag7_@2x.png')}
-                                showText={'类目'} tag={'ljd'}
-                                onClick={this._onMenuClick}/>
+                                showText={'类目'}
+                                onClick={()=>this._onMenuClick('类目')}/>
                     <MenuButton renderIcon={require('../image/icon_home_center_tag8_@2x.png')}
-                                showText={'品牌'} tag={'gd'}
-                                onClick={this._onMenuClick}/>
+                                showText={'品牌'}
+                                onClick={()=>this._onMenuClick('品牌')}/>
                 </View>
                 <Recommend/>
                 <Swiper style={styles.wrapper} height={70}

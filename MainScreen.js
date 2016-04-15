@@ -55,7 +55,7 @@ export default class MainScreen extends Component {
     render() {
         return (
                 <TabNavigator hidesTabTouch={true} tabBarStyle={styles.tab}>
-                    {this._renderTabItem(HOME_NORMAL, HOME_FOCUS, HOME, <HomePage/>)}
+                    {this._renderTabItem(HOME_NORMAL, HOME_FOCUS, HOME, <HomePage navigatorHome={this.props.navigatorMain}/>)}
                     {this._renderTabItem(CATEGORY_NORMAL, CATEGORY_FOCUS, CATEGORY,<CategoryPage/>)}
                     {this._renderTabItem(CART_NORMAL, CART_FOCUS, CART, <CartPage/>)}
                     {this._renderTabItem(PERSONAL_NORMAL, PERSONAL_FOCUS, PERSONAL,<MinePage/>)}
