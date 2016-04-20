@@ -8,6 +8,7 @@ import React, {
     ScrollView,
     Alert,
     TouchableOpacity,
+    TouchableHighlight,
 } from 'react-native';
 
 import TopBar from './Home/TopBar';
@@ -19,6 +20,7 @@ import BusinessNew from './Home/BusinessNew';
 import ThemePavilion from './Home/ThemePavilion';
 
 import ProductList from './Product/ProductList'
+import ProductDetail from './Product/ProductDetail';
 
 const BANNER_IMGS = [
     require('../image/img_home_banner1_@2x.jpg'),
@@ -36,21 +38,30 @@ const adv_IMGS= [
 export default class HomePage extends Component {
     constructor(props) {
         super(props);
-        this._onMenuClick = this._onMenuClick.bind(this);
-
     }
     _onMenuClick(title:string) {
-       let navigatorHome = this.props.navigatorHome;
-       if(navigatorHome) {
-          let productList=()=>{return <ProductList navigatorProductList={navigatorHome}/>};
-           navigatorHome.push({
+       let navigator = this.props.navigator;
+       if(navigator) {
+           navigator.push({
                name: title,
-               component: productList,
+               component: ProductList,
                params: {
-                    text:title,
+                    title:title,
                 }
            })
        }
+    }
+    _onItemClick(title:string){
+      let navigator = this.props.navigator;
+      if(navigator) {
+          navigator.push({
+              name: title,
+              component: ProductDetail,
+              params: {
+                   title:title,
+               }
+          })
+      }
     }
     render() {
         return (
@@ -60,9 +71,15 @@ export default class HomePage extends Component {
                 <Swiper style={styles.wrapper} height={145}
                         paginationStyle={styles.paginationStyle}
                         loop={true}>
-                      <Image  source={BANNER_IMGS[0]}/>
-                      <Image  source={BANNER_IMGS[1]}/>
-                      <Image  source={BANNER_IMGS[2]}/>
+                        <TouchableHighlight onPress={()=>this._onItemClick('商品详情')}>
+                          <Image source={BANNER_IMGS[0]}/>
+                        </TouchableHighlight>
+                        <TouchableHighlight onPress={()=>this._onItemClick('商品详情')}>
+                          <Image source={BANNER_IMGS[1]}/>
+                        </TouchableHighlight>
+                        <TouchableHighlight onPress={()=>this._onItemClick('商品详情')}>
+                          <Image source={BANNER_IMGS[2]}/>
+                        </TouchableHighlight>
                 </Swiper>
                 <View style={styles.menuView1}>
                     <MenuButton renderIcon={require('../image/icon_home_center_tag1_@2x.png')}
@@ -92,18 +109,23 @@ export default class HomePage extends Component {
                                 showText={'品牌'}
                                 onClick={()=>this._onMenuClick('品牌')}/>
                 </View>
-                <Recommend/>
+                <Recommend  onItemClick={this._onItemClick.bind(this)} onMoreClick={this._onMenuClick.bind(this)}/>
                 <Swiper style={styles.wrapper} height={70}
                   paginationStyle={styles.paginationStyle}
                   loop={true}>
-                      <Image  source={adv_IMGS[0]} />
-                      <Image  source={adv_IMGS[1]} />
-                      <Image  source={adv_IMGS[2]} />
-                      <Image  source={adv_IMGS[3]} />
+                  <TouchableHighlight onPress={()=>this._onItemClick('商品详情')}>
+                    <Image source={adv_IMGS[0]}/>
+                  </TouchableHighlight>
+                  <TouchableHighlight onPress={()=>this._onItemClick('商品详情')}>
+                    <Image source={adv_IMGS[1]}/>
+                  </TouchableHighlight>
+                  <TouchableHighlight onPress={()=>this._onItemClick('商品详情')}>
+                    <Image source={adv_IMGS[2]}/>
+                  </TouchableHighlight>
                 </Swiper>
-                <BusinessActive/>
-                <BusinessNew/>
-                <ThemePavilion/>
+                <BusinessActive onItemClick={this._onItemClick.bind(this)} onMoreClick={this._onMenuClick.bind(this)}/>
+                <BusinessNew onItemClick={this._onItemClick.bind(this)} onMoreClick={this._onMenuClick.bind(this)}/>
+                <ThemePavilion onItemClick={this._onItemClick.bind(this)} onMoreClick={this._onMenuClick.bind(this)}/>
               </ScrollView>
             </View>
         )

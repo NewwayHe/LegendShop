@@ -55,15 +55,14 @@ export default class Splash extends React.Component {
       }
     ).start();
 
-    let { navigator } = this.props;
-    let main=()=>{return <Main navigatorMain={navigator}/>};
+    let {navigator}=this.props;
     if(navigator){
-        setTimeout(() => {
-        navigator.replace({
-        name: '首页',
-        component: main,
-        });
-      }, 3000);
+      setTimeout(() => {
+          navigator.replace({
+          name: '首页',
+          component: Main,
+          });
+        }, 3000);
     }
   }
 

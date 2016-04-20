@@ -8,6 +8,8 @@ import React, {
   TouchableOpacity,
 } from 'react-native';
 
+import ProductDetail from '../Product/ProductDetail';
+
 const RECOMMEND_IMGS = [
     require('../../image/hotprod_banner01_@2x.jpg'),
     require('../../image/hotprod_banner02_@2x.jpg'),
@@ -20,10 +22,16 @@ const RECOMMEND_IMGS = [
            super(props);
    }
 
+   _onItemClick(title:string){
+       if (this.props.onItemClick) {
+           this.props.onItemClick(title);
+       }
+   }
+
    _renderItem(data){
      return data.map((item,i)=>{
        return (
-           <TouchableOpacity key={i} activeOpacity={0.7}>
+           <TouchableOpacity onPress={()=>this._onItemClick('商品详情')} key={i} activeOpacity={0.7}>
              <View style={styles.container1}>
                <Image source={item} style={styles.image}/>
                <Text style={[styles.text1,{marginTop:3}]}>

@@ -14,6 +14,7 @@ import React, {
 } from 'react-native';
 
 import ExpandTab from './ExpandTab';
+import ProductDetail from './Product/ProductDetail';
 
 //模拟分类虚拟数据
 const DATA=[
@@ -74,8 +75,17 @@ export default class CategoryPage extends React.Component {
     constructor(props) {
         super(props);
     }
-    _onClick() {
-
+    _onClick(title:string) {
+        let navigator = this.props.navigator;
+        if(navigator) {
+            navigator.push({
+                name: title,
+                component: ProductDetail,
+                params: {
+                     title:title,
+                 }
+            })
+        }
     }
     render() {
         return (
@@ -89,7 +99,7 @@ export default class CategoryPage extends React.Component {
                         style={styles.inputText}/>
                 </View>
             </View>
-            <ExpandTab originData={DATA}/>
+            <ExpandTab originData={DATA} onClick={this._onClick.bind(this)}/>
           </View>
         );
     }

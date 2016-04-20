@@ -15,6 +15,17 @@ const NEW_BANNER_IMGS = [
   require('../../image/new_banner03_@2x.jpg'),
 ];
  export default class BusinessActive extends React.Component {
+
+   _onItemClick(title:string){
+       if (this.props.onItemClick) {
+           this.props.onItemClick(title);
+       }
+   }
+   _onMoreClick(title:string){
+     if (this.props.onMoreClick) {
+         this.props.onMoreClick(title);
+     }
+   }
   render() {
     return(
           <View style={styles.parent}>
@@ -22,23 +33,25 @@ const NEW_BANNER_IMGS = [
                 <Text style={styles.title1}>
                   商家上新
                 </Text>
-                <Text style={styles.title2}>
-                  更多>>
-                </Text>
+                <TouchableOpacity onPress={()=>this._onMoreClick('最新商品')} activeOpacity={0.7}>
+                  <Text style={styles.title2}>
+                    更多>>
+                  </Text>
+                </TouchableOpacity>
               </View>
               <View style={[styles.separate,{marginTop:3}]}/>
               <View style={styles.container2}>
                 <View style={styles.container1}>
-                  <TouchableOpacity activeOpacity={0.7}>
+                  <TouchableOpacity onPress={()=>this._onItemClick('商品详情')} activeOpacity={0.7}>
                     <Image source={NEW_BANNER_IMGS[0]} style={styles.image1}/>
                   </TouchableOpacity>
                   <View style={styles.separate}/>
-                  <TouchableOpacity activeOpacity={0.7}>
+                  <TouchableOpacity onPress={()=>this._onItemClick('商品详情')} activeOpacity={0.7}>
                     <Image source={NEW_BANNER_IMGS[1]} style={styles.image1}/>
                   </TouchableOpacity>
                 </View>
                 <View style={styles.separate1}/>
-                <TouchableOpacity activeOpacity={0.7}>
+                <TouchableOpacity onPress={()=>this._onItemClick('商品详情')} activeOpacity={0.7}>
                   <Image source={NEW_BANNER_IMGS[2]} style={styles.image2}/>
                 </TouchableOpacity>
               </View>

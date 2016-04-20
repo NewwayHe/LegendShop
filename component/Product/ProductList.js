@@ -14,6 +14,7 @@ import React,{
 import invariant from 'invariant';
 import dismissKeyboard from 'dismissKeyboard';
 import ProductCell from './ProductCell';
+import ProductDetail from './ProductDetail';
 
 import Back from '../Back';
 
@@ -125,7 +126,7 @@ export default class ProductList extends React.Component{
   // }
 
   _onClick() {
-      this.props.navigatorProductList.pop();
+      this.props.navigator.pop();
   }
   /*
     这里有个注意的地方，因为顶部navigator是在js的主线程中渲染的
@@ -206,12 +207,17 @@ export default class ProductList extends React.Component{
     return this.state.dataSource.cloneWithRows(data);
   }
 
-  _pressItem(product: Object){
-      // this.props.navigator.push({
-      //   title: '商品详情',
-      //   component: ProductDetail,
-      //   passProps: {areaId: product.areaid,itemId: product.itemid,userName:'13066831968'},
-      // });
+  _pressItem(title:string) {
+     let navigator = this.props.navigator;
+     if(navigator) {
+         navigator.push({
+             name: title,
+               component: ProductDetail,
+             params: {
+                  title:title,
+              }
+         })
+     }
   }
 
   _renderFooter(){
@@ -253,7 +259,7 @@ export default class ProductList extends React.Component{
   ) {
     return (
       <ProductCell
-        onSelect={()=>this._pressItem(product)}
+        onSelect={()=>this._pressItem('商品详情')}
         onHighlight={() => highlightRowFunc(sectionID, rowID)}
         onUnhighlight={() => highlightRowFunc(null, null)}
         product={product}
@@ -278,7 +284,7 @@ export default class ProductList extends React.Component{
       />;
     return (
       <View style={{flex: 1}}>
-          <Back title={this.props.navigatorProductList.text} onClick={this._onClick}/>
+          <Back title={this.props.title} onClick={this._onClick}/>
           <View style={{flex:1,backgroundColor:'#F1F2F6'}}>
             {content}
           </View>
@@ -333,7 +339,7 @@ let styles = StyleSheet.create({
   },
   rowSeparator: {
     backgroundColor: 'rgba(0, 0, 0, 0.1)',
-    height: 1,
+    height: 0.5,
     marginLeft: 4,
   },
   rowSeparatorHide: {

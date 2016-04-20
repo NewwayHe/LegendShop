@@ -42,8 +42,11 @@ export default class ExpandTab extends React.Component {
       });
     }
 
-    _grandsonItemSelected(index:number){
+    _grandsonItemSelected(title:string){
         //跳转逻辑
+        if(this.props.onClick){
+          this.props.onClick(title);
+        }
     }
     //绘制最左边的tab栏
     _renderTab(data:object,tabIndex:number){
@@ -78,7 +81,7 @@ export default class ExpandTab extends React.Component {
       return childData[childIndex].items.map((item,i)=>{
         let selected=styles.selectBg;
         return (
-          <TouchableOpacity key={i} activeOpacity={0.7} onPress={()=> this._grandsonItemSelected(i)}>
+          <TouchableOpacity key={i} activeOpacity={0.7} onPress={()=> this._grandsonItemSelected('商品详情')}>
               <View style={styles.container2}>
                   <Text style={styles.childeText}>{item}</Text>
               </View>
