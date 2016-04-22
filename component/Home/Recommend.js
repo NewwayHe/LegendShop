@@ -27,7 +27,11 @@ const RECOMMEND_IMGS = [
            this.props.onItemClick(title);
        }
    }
-
+   _onMoreClick(title:string){
+     if (this.props.onMoreClick) {
+         this.props.onMoreClick(title);
+     }
+   }
    _renderItem(data){
      return data.map((item,i)=>{
        return (
@@ -60,9 +64,11 @@ const RECOMMEND_IMGS = [
                 <Text style={styles.title1}>
                   热卖推荐
                 </Text>
-                <Text style={styles.title2}>
-                  更多>>
-                </Text>
+                <TouchableOpacity onPress={()=>this._onMoreClick('热门推荐')} activeOpacity={0.7}>
+                  <Text style={styles.title2}>
+                    更多>>
+                  </Text>
+                </TouchableOpacity>
               </View>
               <View style={styles.container}>
                   {this._renderItem(RECOMMEND_IMGS)}

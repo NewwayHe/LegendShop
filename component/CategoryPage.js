@@ -99,6 +99,7 @@ export default class CategoryPage extends React.Component {
                         style={styles.inputText}/>
                 </View>
             </View>
+            <View style={styles.separate}/>
             <ExpandTab originData={DATA} onClick={this._onClick.bind(this)}/>
           </View>
         );
@@ -139,7 +140,10 @@ const styles = StyleSheet.create({
       height: 10,
       resizeMode: 'stretch'
   },
-
+  separate:{
+    height:1,
+    backgroundColor:'#A7A7AA',
+  },
   inputText: {
       flex: 1,
       backgroundColor: 'transparent',

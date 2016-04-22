@@ -33,11 +33,12 @@ export default class MinePage extends React.Component {
     render() {
         return (
           <View style={{flex: 1}}>
-            <View style={styles.container}>
-                <Text style={styles.text}>
-                  我的
-                </Text>
-            </View>
+              <View style={styles.container}>
+                  <Text style={styles.text}>
+                    我的
+                  </Text>
+              </View>
+              <View style={styles.separate}/>
               <ScrollView style={styles.container1}>
                       <Image source={require('../image/mine/mine_bg.jpg')} style={styles.backgroundImage}/>
                       <TopInfo/>
@@ -62,6 +63,10 @@ const styles = StyleSheet.create({
   },
   container1:{
     backgroundColor:'#F1F2F6',
+  },
+  separate:{
+    height:1,
+    backgroundColor:'#A7A7AA',
   },
   back:{
     width:15,

@@ -13,6 +13,7 @@ import React, {
 export default class Header extends Component {
     render() {
         return (
+          <View>
             <View style={styles.container}>
                 <Image source={require('../../image/home_logo_@2x.png')} style={styles.logo}/>
                 <View style={styles.searchBox}>
@@ -24,6 +25,8 @@ export default class Header extends Component {
                 </View>
                 <Text style={styles.loginText}>登陆</Text>
             </View>
+            <View style={styles.separate}/>
+          </View>
         )
     }
 }
@@ -74,5 +77,9 @@ const styles = StyleSheet.create({
     },
     loginText:{
         fontSize:12,
+    },
+    separate:{
+      height:1,
+      backgroundColor:'#A7A7AA',
     },
 });

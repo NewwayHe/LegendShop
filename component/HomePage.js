@@ -7,6 +7,7 @@ import React, {
     StyleSheet,
     ScrollView,
     Alert,
+    RefreshControl,
     TouchableOpacity,
     TouchableHighlight,
 } from 'react-native';
@@ -38,6 +39,10 @@ const adv_IMGS= [
 export default class HomePage extends Component {
     constructor(props) {
         super(props);
+        this.state={
+          isRefreshing:false,
+        };
+        this._onRefresh=this._onRefresh.bind(this);
     }
     _onMenuClick(title:string) {
        let navigator = this.props.navigator;
@@ -63,11 +68,26 @@ export default class HomePage extends Component {
           })
       }
     }
+    _onRefresh() {
+        this.setState({isRefreshing: true});
+        setTimeout(() => {
+          //这里从新获取数据
+
+          this.setState({
+            isRefreshing: false,
+          });
+        }, 3000);
+    }
     render() {
         return (
             <View style={{flex: 1}}>
               <TopBar />
-	            <ScrollView style={styles.container1}>
+	            <ScrollView style={styles.container1}
+                          refreshControl={
+                            <RefreshControl
+                              refreshing={this.state.isRefreshing}
+                              onRefresh={this._onRefresh}
+                          />}>
                 <Swiper style={styles.wrapper} height={145}
                         paginationStyle={styles.paginationStyle}
                         loop={true}>
