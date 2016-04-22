@@ -34,7 +34,7 @@ export default class Back extends React.Component {
                       <Image source={require('../image/ic_arrow_back_black_24dp.png')} style={styles.img}/>
                     </View>
                 </TouchableOpacity>
-                <Text style={{fontSize:15,marginLeft:135}}>
+                <Text style={styles.text}>
                       {title}
                 </Text>
             </View>
@@ -63,5 +63,9 @@ const styles = StyleSheet.create({
     marginLeft:5,
       width:28,
       height:28,
+  },
+  text:{
+    fontSize:15,
+    marginLeft:135,
   },
 });

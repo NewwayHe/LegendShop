@@ -73,20 +73,19 @@ export default class CartPage extends React.Component {
     componentDidMount(){
         this._fetchData();
     }
-
     _fetchData(){
         //网络获取购物车数据
-      var dataBlob = {};
-      var sectionIDs = [];
-      var rowIDs = [];
+      let dataBlob = {};
+      let sectionIDs = [];
+      let rowIDs = [];
       //这里一定要非常注意，真正存储数据的地方只有dataBlob
-      for (var ii = 0; ii < CART_DATAS.length; ii++) {
-        var sectionName = CART_DATAS[ii].title;
+      for (let ii = 0,maxI = CART_DATAS.length ; ii < maxI; ii++) {
+        let sectionName = CART_DATAS[ii].title;
         sectionIDs.push(sectionName);
         dataBlob[sectionName] = sectionName;
         rowIDs[ii] = [];
-        for (var jj = 0; jj < CART_DATAS[ii].content.length; jj++) {
-          var rowName = 'S' + ii + ', R' + jj;
+        for (let jj = 0,maxJ =CART_DATAS[ii].content.length; jj < maxJ; jj++) {
+          let rowName = 'S' + ii + ', R' + jj;
           rowIDs[ii].push(rowName);
           dataBlob[rowName] = CART_DATAS[ii].content[jj];
         }
@@ -95,7 +94,6 @@ export default class CartPage extends React.Component {
           dataSource: this.state.dataSource.cloneWithRowsAndSections(dataBlob, sectionIDs, rowIDs),
         });
     }
-
     _pressItem(title:string) {
        let navigator = this.props.navigator;
        if(navigator) {
@@ -167,7 +165,7 @@ export default class CartPage extends React.Component {
                 </Text>
             </View>
             <View style={styles.separate}/>
-            <View style={{flex:1,backgroundColor:'#F1F2F6'}}>
+            <View style={styles.container1}>
               {content}
             </View>
             <View  style={styles.bottom}>
@@ -198,6 +196,10 @@ const styles = StyleSheet.create({
       height: Platform.OS === 'ios' ? 50 : 50,   // 处理iOS状态栏
       backgroundColor: 'white',
       alignItems: 'center'  // 使元素垂直居中排布, 当flexDirection为column时, 为水平居中
+  },
+  container1:{
+    flex:1,
+    backgroundColor:'#F1F2F6',
   },
   rowSeparator: {
     backgroundColor: 'rgba(0, 0, 0, 0.1)',
