@@ -15,6 +15,8 @@ import React,{
 import Back from '../Back';
 import Swiper from 'react-native-swiper';
 import ScrollTabPage from './ScrollTabPage';
+import OrderCommit from './../Order/OrderCommit';
+
 
 export default class ProductDetail extends React.Component{
 
@@ -31,7 +33,16 @@ export default class ProductDetail extends React.Component{
   }
 
   _onPayClick(){
-
+    let navigator = this.props.navigator;
+    if(navigator) {
+        navigator.push({
+            name: '订单填写',
+              component: OrderCommit,
+            params: {
+                 title:'订单填写',
+             }
+        })
+    }
   }
   _onCartClick(){
 

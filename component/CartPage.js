@@ -47,7 +47,6 @@ import React, {
       {img:require('../image/cart_banner.jpg'),name:'百达翡丽(Hamiliton)卡其海军先锋系列 自动机械男表h88475345',
       color:'颜色：银盘 白色',price:'1256000.00'},]
    },
-
   ];
 export default class CartPage extends React.Component {
 
