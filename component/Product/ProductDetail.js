@@ -179,10 +179,10 @@ const styles = StyleSheet.create({
   text2:{
     color:'#FF303D',
     fontWeight:'100',
-    fontSize:9,
+    fontSize:10,
   },
   text1:{
-    fontSize:9,
+    fontSize:10,
   },
   border1:{
     borderWidth:0.5,
@@ -223,7 +223,7 @@ const styles = StyleSheet.create({
   },
   bottomText:{
     color:'white',
-    fontSize:9,
+    fontSize:10,
     paddingLeft:22,
     borderRadius:2,
     paddingRight:22,

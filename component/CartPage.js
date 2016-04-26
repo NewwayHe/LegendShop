@@ -220,7 +220,7 @@ const styles = StyleSheet.create({
   },
   sectionHeader:{
     marginLeft:5,
-    fontSize:9,
+    fontSize:10,
   },
   icon:{
     width:12,
@@ -244,7 +244,7 @@ const styles = StyleSheet.create({
   },
   bottomText:{
     color:'white',
-    fontSize:9,
+    fontSize:10,
     paddingLeft:22,
     borderRadius:2,
     paddingRight:22,
@@ -256,6 +256,6 @@ const styles = StyleSheet.create({
     height:13,
   },
   text1:{
-    fontSize:8,
+    fontSize:10,
   },
 });

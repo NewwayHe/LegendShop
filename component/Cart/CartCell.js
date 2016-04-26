@@ -78,10 +78,10 @@ let styles = StyleSheet.create({
     width: 75,
   },
   text1:{
-    fontSize:9,
+    fontSize:10,
   },
   text3:{
-    fontSize:9,
+    fontSize:10,
     marginTop:3,
   },
   icon:{

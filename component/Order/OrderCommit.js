@@ -149,7 +149,7 @@ export default class OrderCommit extends React.Component{
               </View>
               <View style={styles.separate}/>
               <View style={[styles.container3,{marginTop:0}]}>
-                <Text style={styles.text}>发票抬头:朗尊软件</Text>
+                <Text style={styles.text}>发票抬头:某某科技有限公司</Text>
               </View>
               <View style={styles.separate}/>
               <View style={[styles.container3,{marginTop:0}]}>
@@ -228,12 +228,12 @@ const styles = StyleSheet.create({
 
   },
   text:{
-    fontSize:9,
+    fontSize:10,
   },
   inputText: {
       flex: 1,
       backgroundColor: 'transparent',
-      fontSize: 9,
+      fontSize: 10,
   },
   bottom:{
     flexDirection:'row',
@@ -249,7 +249,7 @@ const styles = StyleSheet.create({
   },
   bottomText:{
     color:'white',
-    fontSize:9,
+    fontSize:10,
     paddingLeft:22,
     borderRadius:2,
     paddingRight:22,
