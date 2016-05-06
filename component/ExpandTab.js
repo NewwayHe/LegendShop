@@ -7,6 +7,7 @@ import React, {
     Image,
     TouchableOpacity,
     PropTypes,
+    ActivityIndicatorIOS,
     ScrollView,
     StyleSheet,
 } from 'react-native';
@@ -52,11 +53,12 @@ export default class ExpandTab extends React.Component {
     _renderTab(data:object,tabIndex:number){
       return data.map((item,i)=>{
         let selected=styles.selectText;
+        let picUri= 'http://react.legendshop.cn/photoserver/photo/'+item.pic;
         return (
           <TouchableOpacity key={i} activeOpacity={0.7} onPress = {()=> this._tabItemSelected(i)}>
               <View style={styles.container1}>
-                  <Image style={styles.icon} source={item.img}/>
-                  <Text style={[styles.showText,tabIndex==i?selected:null]}>{item.type}</Text>
+                  <Image style={styles.icon} source={{uri: picUri}}/>
+                  <Text style={[styles.showText,tabIndex==i?selected:null]}>{item.name}</Text>
               </View>
           </TouchableOpacity>
            )
@@ -64,12 +66,12 @@ export default class ExpandTab extends React.Component {
     }
     //绘制中间的child栏
     _renderChild(data:object,tabIndex:number,childeIndex:number){
-      return data[tabIndex].content.map((item,i)=>{
+      return data[tabIndex].childrenList.map((item,i)=>{
         let selected=styles.selectBg;
         return (
           <TouchableOpacity key={i} activeOpacity={0.7} onPress={()=> this._childItemSelected(i)}>
               <View style={[styles.container2,childeIndex==i?selected:null]}>
-                  <Text style={styles.childeText}>{item.category}</Text>
+                  <Text style={styles.childeText}>{item.name}</Text>
               </View>
           </TouchableOpacity>
            )
@@ -77,39 +79,44 @@ export default class ExpandTab extends React.Component {
     }
     //绘制最右边的grandson栏
     _renderGrandson(data:object,tabIndex:number,childIndex:number){
-      let childData=data[tabIndex].content;
-      return childData[childIndex].items.map((item,i)=>{
+      let childData=data[tabIndex].childrenList;
+      return childData[childIndex].childrenList.map((item,i)=>{
         let selected=styles.selectBg;
         return (
           <TouchableOpacity key={i} activeOpacity={0.7} onPress={()=> this._grandsonItemSelected('商品详情')}>
               <View style={styles.container2}>
-                  <Text style={styles.childeText}>{item}</Text>
+                  <Text style={styles.childeText}>{item.name}</Text>
               </View>
           </TouchableOpacity>
            )
       });
     }
     render() {
-        let {tabIndex,childIndex}=this.state;
-        let tab=this._renderTab(this.props.originData,tabIndex);
-        let child=this._renderChild(this.props.originData,tabIndex,childIndex);
-        let grandson=this._renderGrandson(this.props.originData,tabIndex,childIndex);
-        return (
-          <View style={styles.parent}>
-            <View style={styles.separate}/>
-            <View style={styles.container}>
-                <ScrollView style={styles.scroll1}>
-                  {tab}
-                </ScrollView>
-                <ScrollView style={styles.scroll2}>
-                  {child}
-                </ScrollView>
-                <ScrollView style={styles.scroll3}>
-                  {grandson}
-                </ScrollView>
-            </View>
-          </View>
-        );
+        let {originData}=this.props;
+        if(originData.length>0){
+            let {tabIndex,childIndex}=this.state;
+            let tab=this._renderTab(originData,tabIndex);
+            let child=this._renderChild(originData,tabIndex,childIndex);
+            let grandson=this._renderGrandson(originData,tabIndex,childIndex);
+            return (
+              <View style={styles.parent}>
+                <View style={styles.separate}/>
+                <View style={styles.container}>
+                    <ScrollView style={styles.scroll1}>
+                      {tab}
+                    </ScrollView>
+                    <ScrollView style={styles.scroll2}>
+                      {child}
+                    </ScrollView>
+                    <ScrollView style={styles.scroll3}>
+                      {grandson}
+                    </ScrollView>
+                </View>
+              </View>
+            );
+      }else{
+        return (<ActivityIndicatorIOS style={styles.scrollSpinner} />);
+      }
     }
 }
 
@@ -119,7 +126,7 @@ const styles = StyleSheet.create({
     backgroundColor:'#F1F2F6',
   },
   container:{
-    flexDirection:1,
+    flex:1,
     flexDirection:'row',
   },
   separate:{
@@ -139,8 +146,8 @@ const styles = StyleSheet.create({
   container2:{
      alignItems:'center',
      flex:1,
-     paddingTop:5,
-     paddingBottom:5,
+     height:40,
+     paddingTop:7,
      borderRightWidth:0.5,
      borderBottomWidth:0.5,
      borderColor:'#F0F0F0',
@@ -185,5 +192,8 @@ const styles = StyleSheet.create({
     paddingBottom:8,
     fontSize: 10,
     color:'#6E6E6E',
+  },
+  scrollSpinner: {
+    marginVertical: 20,
   },
 });
